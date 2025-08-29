@@ -19,6 +19,7 @@ public class Biblioteca implements Serializable {
 	private Integer id;		
 	private String nome;
 	@OneToOne(cascade = CascadeType.ALL)
+	
 	private Endereco endereco;
 	private String usucriacao;
 	private OffsetDateTime datacriacao;
