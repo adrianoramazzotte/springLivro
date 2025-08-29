@@ -1,0 +1,5 @@
+instalar o postman
+conferir o usuario e senha do mysql no arquivo aplication properties
+colocar manualmente valores no banco de dados
+acessar o postman com este recurso
+http://localhost:8080/livros

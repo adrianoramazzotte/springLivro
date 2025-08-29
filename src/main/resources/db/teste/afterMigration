@@ -1,0 +1,97 @@
+SET foreign_key_checks = 0;
+SET SQL_SAFE_UPDATES=0;
+
+
+delete from biblioteca; 
+delete from editora;
+delete from endereco;
+delete from escola;
+delete from genero;
+delete from livro;
+delete from locacao;
+delete from reserva;
+delete from serie;
+delete from usuario; 
+delete from classepermissao; 
+
+alter table biblioteca auto_increment = 1;
+alter table editora auto_increment = 1;
+alter table endereco auto_increment = 1;
+alter table escola auto_increment = 1;
+alter table genero auto_increment = 1;
+alter table livro auto_increment = 1;
+alter table locacao auto_increment = 1;
+alter table reserva auto_increment = 1;
+alter table serie auto_increment = 1;
+alter table usuario auto_increment = 1;
+alter table classepermissao auto_increment = 1;
+
+INSERT INTO serie (id,ano, turma, nome) VALUES ('1', '2020', '3', 'A');
+INSERT INTO serie (id,ano, turma, nome) VALUES ('2', '2020', '3', 'A');
+INSERT INTO serie (id,ano, turma, nome) VALUES ('3', '2020', '3', 'A');
+INSERT INTO serie (id,ano, turma, nome) VALUES ('4', '2020', '3', 'A');
+INSERT INTO endereco (id, bairro, cep, cidade, logradouro, numero, uf) VALUES ('1', 'Universitario', '86702690', 'raponas', 'Tico Tico do Bico Amarelo', '827', 'PR');
+INSERT INTO endereco (id, bairro, cep, cidade, logradouro, numero, uf) VALUES ('2', 'Universitario', '86702690', 'raponas', 'Tico Tico do Bico Amarelo', '827', 'PR');
+INSERT INTO endereco (id, bairro, cep, cidade, logradouro, numero, uf) VALUES ('3', 'Universitario', '86702690', 'raponas', 'Tico Tico do Bico Amarelo', '827', 'PR');
+INSERT INTO endereco (id, bairro, cep, cidade, logradouro, numero, uf) VALUES ('4', 'Universitario', '86702690', 'raponas', 'Tico Tico do Bico Amarelo', '827', 'PR');
+INSERT INTO usuario  (id, cpf, email, senha, telefone) VALUES ('1', '00100000101', 'adm@daringtech.com.br', '$2a$10$wW7ZvChHeGoL0I2ZZBzMKOaNLSxiqW7EA4Wxv6EL3/8uGXQFlmZX.', '4399999999');
+
+
+INSERT INTO biblioteca (id, nome, endereco_id, usucriacao, datacriacao, usualteracao, dataalteracao) VALUES 
+('1', 'adriano', '1', 'adriano@gmail.com', '2023-03-05', 'adriano@gmail.com', '2023-03-09'),
+('2', 'pedro', '2', 'pedro@gmail.com', '2023-03-05', 'adriano@gmail.com', '2023-03-09'),
+('3', 'ana', '3', 'ana@gmail.com', '2023-03-05', 'ana@gmail.com', '2023-03-09');
+
+INSERT INTO genero (id, nome, usucriacao, datacriacao, usualteracao, dataalteracao) VALUES 
+('1', 'Ação', 'adriano@gmail.com', '2023-03-05', 'gabriel@gmail.com', '2023-03-09'),
+('2', 'Ficção', 'adriano@gmail.com', '2023-03-05', 'gabriel@gmail.com', '2023-03-09'),
+('3', 'Aventura', 'adriano@gmail.com', '2023-03-05', 'gabriel@gmail.com', '2023-03-09');
+
+INSERT INTO editora (id, cpfoucnpjnpj, email, razao, telefone, usucriacao, datacriacao) VALUES 
+('1', '000000000001-91', 'ana@gmail.com', 'Editora 01', '4399999999', 'adriano@gmail.com', '2023-03-07'),
+('2', '000000000002-91', 'pedro@gmail.com', 'Editora 02', '4399999999', 'adriano@gmail.com', '2023-03-07');
+
+INSERT INTO livro (id, ano, autor, classificacao, codigo, status, titulo, biblioteca_id, editora_id, genero_id, data_cadastro, usucriacao, datacriacao) 
+VALUES 
+('1', '1998', 'xxxx', '16', '151515', 'Disponível', 'Aventuras de um Cão', '1', '1', '1', '2023-03-08', 'ana@gmail.com', '2023-03-08'),
+('2', '2010', 'aaaaa', '18', '151515', 'Disponível', 'Aventuras de um Cão', '1', '1', '2', '2023-03-08', 'ana@gmail.com', '2023-03-08');
+
+INSERT INTO escola (id, biblio_id, nome, endereco_id, cnpj, email) VALUES 
+('1', '1', 'escola', '1', '1111', 'escola@gmail.com'),
+('2', '1', 'escola2', '3', '2', 'escola@gmail.com');
+
+INSERT INTO locacao (id, datadevolucao, datalocacao, multadiaria, valor_livro, cliente_id, funcionario_id, livro_id) VALUES 
+('1', '2023-03-12', '2023-03-09', '.50', '40', '1', '1', '2'),
+('2', '2023-03-12', '2023-03-09', '.50', '40', '1', '1', '2');
+
+INSERT INTO reserva (id, datalocacao, biblio_id, livro_id) VALUES ('1', '2023-03-10', '1', '1');
+
+
+
+
+INSERT INTO classepermissao (id, nome) VALUES 
+(1, 'biblioteca'), (2, 'editora'), (3, 'endereco'), (4, 'escola'), (5, 'genero'), (6, 'livro'),
+(7, 'locacao'), (8, 'reserva'), (9, 'serie'), (10, 'usuario');
+
+INSERT INTO permissao (id, descricao) VALUES 
+(1,'C_BBLTC'),(2,'R_BBLTC'),(3,'U_BBLTC'),(4,'D_BBLTC'),
+(5,'C_EDTR'),(6,'R_EDTR'),(7,'U_EDTR'),(8,'D_EDTR'),
+(9,'C_ENDRC'),(10,'R_ENDRC'),(11,'U_ENDRC'),(12,'D_ENDRC'),
+(13,'C_ESCL'),(14,'R_ESCL'),(15,'U_ESCL'),(16,'D_ESCL'),
+(17,'C_GNR'),(18,'R_GNR'),(19,'U_GNR'),(20,'D_GNR'),
+(21,'C_LVR'),(22,'R_LVR'),(23,'U_LVR'),(24,'D_LVR'),
+(25,'C_LCC'),(26,'R_LCC'),(27,'U_LCC'),(28,'D_LCC'),
+(29,'C_RSRV'),(30,'R_RSRV'),(31,'U_RSRV'),(32,'D_RSRV'),
+(33,'C_SRE'),(34,'R_SRE'),(35,'U_SRE'),(36,'D_SRE'),
+(37,'C_USR'),(38,'R_USR'),(39,'U_USR'),(40,'D_USR');
+
+INSERT INTO usuario_permissao (id_usuario, id_permissao) VALUES 
+(1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(1,10),
+(1,11),(1,12),(1,13),(1,14),(1,15),(1,16),(1,17),(1,18),(1,19),(1,20),
+(1,21),(1,22),(1,23),(1,24),(1,25),(1,26),(1,27),(1,28),(1,29),
+(1,30), (1,31),(1,32),(1,33),(1,34),(1,35),(1,36), (1,37),(1,38),(1,39), (1,40);
+
+
+
+
+set foreign_key_checks = 1;
